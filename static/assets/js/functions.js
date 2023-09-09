@@ -369,7 +369,7 @@
     }
 
     function kaycee_threesixty(ev) {
-        var imageLink = (location.pathname.replace('single-product-360deg.html', 'assets/images'));
+        var imageLink = (location.pathname.replace('single-product-360deg.html', '/assets/images'));
         $('.kaycee-threed-view').ThreeSixty({
             totalFrames: 12,
             endFrame: 12,
