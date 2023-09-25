@@ -1,55 +1,66 @@
 const mongoose = require('mongoose');
-
+const _ = require('lodash');
 // Define the product schema
 const jewellerySchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: [true, 'Name is required'],
   },
   description: {
     type: String,
-    required: true,
+    required: [true, 'Description is required'],
   },
   material: {
     type: String,
-    required: true,
+    required: [true, 'Material is required'],
   },
-  price:{
+  price: {
     type: Number,
-    required: true
+    required: [true, 'Price is required'],
   },
-  discountedPrice:{
+  discountedPrice: {
     type: Number,
-    required: true
+    required: [true, 'Discounted Price is required'],
   },
-  sizes: [
-    {
-      type: String,
-    },
-  ],
   charms: [
     {
-      type: String,
+      name: String,
+      price: Number,
     },
+    
   ],
   images: [
-    {
-      type: String,
-    },
+    {type: String,}
   ],
   category: {
     type: String,
     enum: ['rings', 'bracelets', 'necklaces'],
-    required: true,
+    required: [true, 'Category is required'],
   },
   isAvailable: {
     type: Boolean,
-    default: true
+    default: true,
   },
-  createdOn:{
+  createdOn: {
     type: Date,
-    default: new Date()
+    default: new Date(),
+  },
+});
+
+
+
+
+jewellerySchema.pre('save', function (next) {
+
+  const fieldsToCapitalize = ['name', 'material', 'category'];
+  for (const field of fieldsToCapitalize) {
+    if (this.isModified(field)) {
+      // Capitalize the field using lodash
+      this[field] = _.capitalize(this[field]);
+    }
   }
+ 
+  next();
 });
 
 // Create the Product model using the schema

@@ -1,222 +1,131 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en-US">
-  <!-- Added by HTTrack --><meta
-    http-equiv="content-type"
-    content="text/html;charset=utf-8"
-  /><!-- /Added by HTTrack -->
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="author" content="SemiColonWeb" />
-
-    <link
-      href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://themes.semicolonweb.com/html/canvas/v5/css/bootstrap.css"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://themes.semicolonweb.com/html/canvas/v5/style.css"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://themes.semicolonweb.com/html/canvas/v5/css/dark.css"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://themes.semicolonweb.com/html/canvas/v5/css/font-icons.css"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://themes.semicolonweb.com/html/canvas/v5/css/animate.css"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://themes.semicolonweb.com/html/canvas/v5/css/magnific-popup.css"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://themes.semicolonweb.com/html/canvas/v5/css/responsive.css"
-      type="text/css"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+<html lang="en">
+  
+<head>
+    <!--  Title -->
     <title>Login</title>
+    <!--  Required Meta Tag -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="handheldfriendly" content="true" />
+    <meta name="MobileOptimized" content="width" />
+    <meta name="description" content="Mordenize" />
+    <meta name="author" content="" />
+    <meta name="keywords" content="Mordenize" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--  Favicon -->
+    <link rel="shortcut icon" type="image/png" href="/assets/dashboard/dist/images/logos/favicon.png" />
+    <!-- Core Css -->
+    <link  id="themeColors"  rel="stylesheet" href="/assets/dashboard/dist/css/style.min.css" />
+    <style>
+      .hidden{
+        display: none;
+      }
+    </style>
   </head>
-  <body class="stretched">
-    <div id="wrapper" class="clearfix">
-      <%- include('header'); -%>
-
-      <!-- <section id="page-title">
-        <div class="container clearfix">
-          <h1>Contact</h1>
-          <span>Get in Touch with Us</span>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Contact</li>
-          </ol>
-        </div>
-      </section> -->
-
-      <section
-        id="map-overlay"
-        style="
-          background-image: url('https://cdn.pixabay.com/photo/2020/04/25/12/14/circle-5090539_960_720.jpg');
-          background-size: cover;
-          background-position: center;
-        "
-      >
-        <div class="container clearfix">
-          <div
-            id="contact-form-overlay-mini"
-            class="clearfix"
-            style="width: 50%"
-          >
-            <div class="fancy-title title-dotted-border">
-              <h3>Login</h3>
+  <body>
+    <!-- Preloader -->
+    <div class="preloader">
+      <img src="/assets/dashboard/dist/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" />
+    </div>
+    <!-- Preloader -->
+    <div class="preloader">
+      <img src="/assets/dashboard/dist/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" />
+    </div>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+      <div class="position-relative overflow-hidden radial-gradient min-vh-100">
+        <div class="position-relative z-index-5">
+          <div class="row">
+            <div class="col-xl-7 col-xxl-8">
+              <a href="index.html" class="text-nowrap logo-img d-block px-4 py-9 w-100">
+                <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/dark-logo.svg" width="180" alt="">
+              </a>
+              <div class="d-none d-xl-flex align-items-center justify-content-center" style="height: calc(100vh - 80px);">
+                <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/backgrounds/login-security.svg" alt="" class="img-fluid" width="500">
+              </div>
             </div>
-            <div class="form-widget">
-              <div class="form-result"></div>
-
-              <form
-                class="nobottommargin"
-                id="template-contactform"
-                name="template-contactform"
-                action=""
-                method="post"
-              >
-                <!-- <div class="col_full">
-                  <label for="template-contactform-name"
-                    >Name <small>*</small></label
-                  >
-                  <input
-                    type="text"
-                    id="template-contactform-name"
-                    name="template-contactform-name"
-                    value=""
-                    class="sm-form-control required"
-                  />
-                </div> -->
-                <div class="col_full">
-                  <label for="template-contactform-email"
-                    >Email <small>*</small></label
-                  >
-                  <input
-                    type="email"
-                    id="template-contactform-email"
-                    name="template-contactform-email"
-                    value=""
-                    class="required email sm-form-control"
-                  />
+            <div class="col-xl-5 col-xxl-4">
+              <div class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
+                <div class="col-sm-8 col-md-6 col-xl-9">
+                  <h2 class="mb-3 fs-7 fw-bolder">Welcome to Modernize</h2>
+                  <p class=" mb-9">Your Admin Dashboard</p>
+                  
+                  
+                  <form id="login-form">
+                    <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show hidden" role="alert">
+                      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                      <strong>Incorrect - </strong> Email/Password
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Email</label>
+                      <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-4">
+                      <label for="exampleInputPassword1" class="form-label">Password</label>
+                      <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    
+                    <button type="submit"  class="btn btn-primary w-100 py-8 mb-4 rounded-2">Sign In</Button>
+                    <!-- <div class="d-flex align-items-center justify-content-center">
+                      <p class="fs-4 mb-0 fw-medium">New to Modernize?</p>
+                      <a class="text-primary fw-medium ms-2" href="authentication-register.html">Create an account</a>
+                    </div> -->
+                  </form>
                 </div>
-                <div class="clear"></div>
-
-                <div class="clear"></div>
-                <div class="col_full">
-                  <label for="template-contactform-subject"
-                    >Password <small>*</small></label
-                  >
-                  <input
-                    type="password"
-                    id="template-contactform-subject"
-                    name="subject"
-                    value=""
-                    class="required sm-form-control"
-                  />
-                </div>
-
-                <div class="col_full hidden">
-                  <input
-                    type="text"
-                    id="template-contactform-botcheck"
-                    name="template-contactform-botcheck"
-                    value=""
-                    class="sm-form-control"
-                  />
-                </div>
-                <div class="col_full">
-                  <button
-                    style="background-color: black !important"
-                    class="button button-3d nomargin"
-                    type="submit"
-                    id="template-contactform-submit"
-                    name="template-contactform-submit"
-                    value="submit"
-                  >
-                    Login
-                  </button>
-                </div>
-                <input
-                  type="hidden"
-                  name="prefix"
-                  value="template-contactform-"
-                />
-              </form>
+              </div>
             </div>
           </div>
         </div>
-
-        <!-- <section id="google-map" class="gmap"></section> -->
-      </section>
-
-      <%- include('footer'); -%>
-
+        
+      </div>
     </div>
-
-    <div id="gotoTop" class="icon-angle-up"></div>
-
-    <script
-      data-cfasync="false"
-      src="https://themes.semicolonweb.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
-    ></script>
-    <script src="https://themes.semicolonweb.com/html/canvas/v5/js/jquery.js"></script>
-    <script src="https://themes.semicolonweb.com/html/canvas/v5/js/plugins.js"></script>
-
-    <script src="https://themes.semicolonweb.com/html/canvas/v5/js/functions.js"></script>
-    <script src="https://maps.google.com/maps/api/js?key=AIzaSyCzkxzbEni5vR_Ugt1De8gBzrLX3236bnA"></script>
-    <script src="https://themes.semicolonweb.com/html/canvas/v5/js/jquery.gmap.js"></script>
+    
+    <!--  Import Js Files -->
+    <script src="/assets/dashboard/dist/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/dashboard/dist/libs/simplebar/dist/simplebar.min.js"></script>
+    <script src="/assets/dashboard/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!--  core files -->
+    <script src="/assets/dashboard/dist/js/app.min.js"></script>
+    <script src="/assets/dashboard/dist/js/app.init.js"></script>
+    <script src="/assets/dashboard/dist/js/app-style-switcher.js"></script>
+    <script src="/assets/dashboard/dist/js/sidebarmenu.js"></script>
+    
+    <script src="/assets/dashboard/dist/js/custom.js"></script>
     <script>
-      $("#google-map").gMap({
-        address: "Melbourne, Australia",
-        maptype: "ROADMAP",
-        zoom: 14,
-        markers: [
-          {
-            address: "Melbourne, Australia",
-            html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hi, we\'re <span>Envato</span></h4><p class="nobottommargin">Our mission is to help people to <strong>earn</strong> and to <strong>learn</strong> online. We operate <strong>marketplaces</strong> where hundreds of thousands of people buy and sell digital goods every day, and a network of educational blogs where millions learn <strong>creative skills</strong>.</p></div>',
-            icon: {
-              image: "images/icons/map-icon-red.png",
-              iconsize: [32, 39],
-              iconanchor: [32, 39],
-            },
-          },
-        ],
-        doubleclickzoom: false,
-        controls: {
-          panControl: true,
-          zoomControl: true,
-          mapTypeControl: true,
-          scaleControl: false,
-          streetViewControl: false,
-          overviewMapControl: false,
-        },
+      $(document).ready(function () {
+          $("#login-form").submit(function (event) {
+              event.preventDefault(); // Prevent the default form submission
+
+              // Serialize the form data
+              var formData = $(this).serialize();
+
+              $.ajax({
+                  type: "POST",
+                  url: "/api/login",
+                  data: formData,
+                  success: function (response) {
+                    console.log(response)
+                      // Check if the response is a success
+                      if (response.status == 200) {
+                          // Redirect to the dashboard on success
+                          window.location.href = "/dashboard";
+                      } else {
+                          // Show the error message for 3 seconds
+                          $(".alert-danger").removeClass("hidden");
+                          setTimeout(function () {
+                              $(".alert-danger").addClass("hidden");
+                          }, 3000);
+                      }
+                  },
+                  error: function () {
+                      // Handle any AJAX errors here
+                      console.error("Error occurred during login.");
+                  }
+              });
+          });
       });
-    </script>
-    <script
-      defer
-      src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993"
-      integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA=="
-      data-cf-beacon='{"rayId":"796ef1c0e81decb5","token":"0627f0b8b73941069bc19139e63db853","version":"2022.11.3","si":100}'
-      crossorigin="anonymous"
-    ></script>
+  </script>
   </body>
+
 </html>

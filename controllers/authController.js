@@ -8,6 +8,7 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
  const nodemailer = require("nodemailer");
 const { findByIdAndUpdate } = require("./../models/userModel");
+const catchAsync = require("../utils/catchAsync");
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -29,7 +30,7 @@ const createSendToken = (user, statusCode, res) => {
   res.cookie("jwt", token, cookieOptions);
   user.password = undefined;
     res.status(statusCode).json({
-      status: "success",
+      status: statusCode,
       token,
       data: {
         user,
@@ -38,7 +39,7 @@ const createSendToken = (user, statusCode, res) => {
 //   res.redirect("/");
 };
 
-exports.signup = async (req, res, next) => {
+exports.signup = catchAsync(async (req, res, next) => {
   try {
     const newUser = await User.create({
       name: req.body.name,
@@ -54,9 +55,9 @@ exports.signup = async (req, res, next) => {
       message: message,
     });
   }
-};
+});
 
-exports.login = async (req, res, next) => {
+exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password)
     return res.json( {
@@ -74,9 +75,9 @@ exports.login = async (req, res, next) => {
       message: "Invalid email or password",
     });
   createSendToken(user, 200, res);
-};
+});
 
-exports.protect = async (req, res, next) => {
+exports.protect = catchAsync(async (req, res, next) => {
   // 1) If token exists
   let token;
   token = req.cookies.jwt;
@@ -84,9 +85,10 @@ exports.protect = async (req, res, next) => {
     // return next(
     //   new AppError("You are not logged in, Please login to get access.", 401)
     // );
-    return res.json({
-        message: "You are not logged in, Please login to get access"
-    });
+    // return res.json({
+    //     message: "You are not logged in, Please login to get access"
+    // });
+    return res.redirect("/login")
 
   // 2) I token is valid
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
@@ -98,10 +100,11 @@ exports.protect = async (req, res, next) => {
     // return next(
     //   new AppError("User belonging to this token doesn't Exist", 401)
     // );
-    return res.json( {
-      status: 401,
-      message: "User belonging to this token doesn't Exist",
-    });
+    // return res.json( {
+    //   status: 401,
+    //   message: "User belonging to this token doesn't Exist",
+    // });
+    return res.redirect("/login")
 
   // 4) Check if password changed
   // if (currentUser.passwordChangedAfter(decoded.iat)) {
@@ -110,19 +113,17 @@ exports.protect = async (req, res, next) => {
 
   req.user = currentUser;
   next();
-};
+});
 
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
-      return next(
-        new AppError("You do not have permission to perform this action.", 403)
-      );
+      return res.redirect('/login')
     }
     next();
   };
 };
-exports.isLoggedIn = async (req, res, next) => {
+exports.isLoggedIn = catchAsync(async (req, res, next) => {
   // 1) Token exists?
   if (req.cookies.jwt) {
     // 2)Verify token
@@ -146,7 +147,7 @@ exports.isLoggedIn = async (req, res, next) => {
   }
   res.locals.user = null;
   next();
-};
+});
 
 exports.logout = (req, res) => {
   res.cookie("jwt", "Logged Out", {
@@ -244,7 +245,7 @@ exports.logout = (req, res) => {
 
 exports.updatePassword = async (req, res, next) => {
   let user = await User.findOne({ email: req.body.email });
-  console.log(req.body);
+  // console.log(req.body);
   if (req.body.otp == user.otp) {
     user.password = req.body.password;
     user.passwordConfirm = req.body.passwordConfirm;
