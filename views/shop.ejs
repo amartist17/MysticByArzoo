@@ -190,12 +190,15 @@
                                              src="/assets/images/apro1211-2-600x778.jpg"
                                              alt="Gold Bracelet" width="600" height="778">
                                     </a>
-                                    <!-- <div class="flash">
-                                        <span class="onsale"><span class="number">-14%</span></span>
-                                        <span class="onnew"><span class="text">New</span></span></div> -->
+                                     <div class="flash">
+                                       <!-- <span class="onsale"><span class="number">-14%</span></span>-->
+                                       <% if (item.charms.length>0) { %>
+                                            <span class="onsale"><span class="text">With Charm</span></span>
+                                            <% } %>
+                                    </div> 
                                     <div class="group-button">
                                         <div class="add-to-cart">
-                                            <a href="#"  data-id="<%= item._id %>" class="button product_type_simple add_to_cart_button addToCart">Add to
+                                            <a href="/product/<%= item._id %>"  data-id="<%= item._id %>" class="button product_type_simple add_to_cart_button ">Add to
                                                 cart</a>
                                         </div>
                                     </div>
@@ -216,7 +219,7 @@
                                 <div class="group-button">
                                     <div class="group-button-inner">
                                         <div class="add-to-cart">
-                                            <a href="#" class="button product_type_variable add_to_cart_button">Add to cart</a>
+                                            <a href="/product/<%= item._id %>" class="button product_type_variable add_to_cart_button">Add to cart</a>
                                         </div>
                                     </div>
                                 </div>
@@ -266,19 +269,19 @@
                 }
             });
         
-            $('.addToCart').click(function(event){
-                event.preventDefault();
-                // console.log($(this).attr("data-id"))
-                $.ajax({
-                    type: "POST",
-                    url: window.location.origin + "/api/add-to-cart",
-                    data: {productId:$(this).attr("data-id")},
-                    success: ()=>{
-                        // alert($(this).attr("data-id"))
-                        location.reload();
-                    },
-                    });
-            })
+            // $('.addToCart').click(function(event){
+            //     event.preventDefault();
+            //     // console.log($(this).attr("data-id"))
+            //     $.ajax({
+            //         type: "POST",
+            //         url: window.location.origin + "/api/add-to-cart",
+            //         data: {productId:$(this).attr("data-id")},
+            //         success: ()=>{
+            //             // alert($(this).attr("data-id"))
+            //             location.reload();
+            //         },
+            //         });
+            // })
         });
     
     

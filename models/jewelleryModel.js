@@ -23,10 +23,7 @@ const jewellerySchema = new mongoose.Schema({
     required: [true, 'Discounted Price is required'],
   },
   charms: [
-    {
-      name: String,
-      price: Number,
-    },
+    {type: String}
     
   ],
   images: [

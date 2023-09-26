@@ -74,10 +74,10 @@ exports.addOtherProducts = catchAsync(async (req, res, next) => {
   };
 
   exports.sendCart = async (req, res, next) => {
-    if(req.cookies.cart){
-    let cart= await Jewellery.find({ _id: { $in: JSON.parse(req.cookies.cart) } })
-    cart= cart.concat(await Products.find({ _id: { $in: JSON.parse(req.cookies.cart) } }))
-    // console.log(cart)
+    if(req.cookies.cartIds){
+      const arr = JSON.parse(req.cookies.cartIds)
+    let cart= await Jewellery.find({ _id: { $in: arr } })
+    cart= cart.concat(await Products.find({ _id: { $in: arr } }))
     res.locals.cart = cart;
     return next()
     }
@@ -87,41 +87,37 @@ exports.addOtherProducts = catchAsync(async (req, res, next) => {
 
   exports.addToCart = async (req, res, next) => {
     let prevCookie=[]
-    // console.log(req.body)
+    console.log(req.body)
     if(req.cookies.cart){
       prevCookie = JSON.parse(req.cookies.cart)
-      prevCookie.push(req.body.productId)
+      prevCookie.push((req.body))
     }else{
-      prevCookie.push(req.body.productId)
+      prevCookie.push((req.body))
     }
-    prevCookie=prevCookie.filter((value, index, self) => self.indexOf(value) === index);
-    res.cookie('cart',JSON.stringify(prevCookie), { httpOnly: true }, () => {
-      // console.log('Cookie has been set');
-      // console.log('Updated Cookie Value:', req.cookies.cart); // This will print the updated value
-  });
+    // console.log(prevCookie)
+    prevCookie = prevCookie.filter((value, index, self) => self.findIndex((obj) => obj.productId === value.productId) === index);
+    const arr = prevCookie.map(item => item.productId);
+    res.cookie('cartIds', JSON.stringify(arr) , { httpOnly: true })
+    res.cookie('cart',JSON.stringify(prevCookie), { httpOnly: true });
   console.log('Updated Cookie Value:', req.cookies.cart);
     res.status(200).json({
         status: 'success',
-        // result: newJewellery
     });
   };
   
   exports.removeFromCart = async (req, res, next) => {
     let prevCookie
-    // console.log(req.body)
     if(req.cookies.cart){
       prevCookie = JSON.parse(req.cookies.cart)
+      console.log(prevCookie)
       prevCookie.pop(req.body.productId)
     }
+    const arr = prevCookie.map(item => item.productId);
 
-    res.cookie('cart',JSON.stringify(prevCookie), { httpOnly: true }, () => {
-      // console.log('Cookie has been set');
-      // console.log('Updated Cookie Value:', req.cookies.cart); // This will print the updated value
-  });
-  // console.log('Updated Cookie Value:', req.cookies.cart);
+    res.cookie('cartIds', JSON.stringify(arr) , { httpOnly: true })
+    res.cookie('cart',JSON.stringify(prevCookie), { httpOnly: true });
     res.status(200).json({
         status: 'success',
-        // result: newJewellery
     });
   };
   

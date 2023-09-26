@@ -49,11 +49,10 @@ exports.product = async (req, res, next) => {
   if(product){
     relatedProducts = await Jewellery.find({category: product.category})
   }else{
-    console.log("hi")
     product = await Products.findOne({_id: req.params.id})
     relatedProducts = await Products.find({category: product.category})
   }
-  console.log(product)
+  // console.log(product)
   res.status(200).render('product',{product,relatedProducts});
 };
 

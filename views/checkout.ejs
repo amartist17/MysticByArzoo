@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/megamenu.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/dreaming-attribute.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
-    <title>Kaycee - HTML Template </title>
+    <title>Checkout</title>
 </head>
 <body>
     <%- include('header'); -%>
@@ -44,7 +44,7 @@
                 <div class="page-main-content">
                     <div class="kaycee">
                         <div class="kaycee-notices-wrapper"></div>
-                        <div class="checkout-before-top">
+                        <!-- <div class="checkout-before-top">
                             <div class="kaycee-checkout-login">
                                 <div class="kaycee-form-login-toggle kaycee-form-toggle">
                                     <div class="kaycee-info">
@@ -106,7 +106,7 @@
                                     <div class="clear"></div>
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
                         <form name="checkout" method="post" class="checkout kaycee-checkout"
                               action="#" enctype="multipart/form-data"
                               novalidate="novalidate">
@@ -116,37 +116,34 @@
                                         <h3>Billing details</h3>
                                         <div class="kaycee-billing-fields__field-wrapper">
                                             <p class="form-row form-row-first validate-required"
-                                               id="billing_first_name_field" data-priority="10"><label
+                                               id="billing_first_name_field" data-priority="10">
+                                               <label
                                                     for="billing_first_name" class="">First name&nbsp;<abbr
-                                                    class="required" title="required">*</abbr></label><span
-                                                    class="kaycee-input-wrapper"><input type="text"
-                                                                                             class="input-text "
-                                                                                             name="billing_first_name"
-                                                                                             id="billing_first_name"
-                                                                                             placeholder="" value=""
-                                                                                             autocomplete="given-name"></span>
+                                                    class="required" title="required">*</abbr></label>
+                                                    <span
+                                                    class="kaycee-input-wrapper">
+                                                    <input type="text"
+                                                    class="input-text "
+                                                    name="firstName"
+                                                    id="billing_first_name"
+                                                    placeholder=""
+                                                    
+                                                    required></span>
                                             </p>
                                             <p class="form-row form-row-last validate-required"
                                                id="billing_last_name_field" data-priority="20"><label
                                                     for="billing_last_name" class="">Last name&nbsp;<abbr
                                                     class="required" title="required">*</abbr></label><span
                                                     class="kaycee-input-wrapper"><input type="text"
-                                                                                             class="input-text "
-                                                                                             name="billing_last_name"
-                                                                                             id="billing_last_name"
-                                                                                             placeholder="" value=""
-                                                                                             autocomplete="family-name"></span>
+                                                    class="input-text "
+                                                    name="lastName"
+                                                    id="billing_last_name"
+                                                    placeholder="" 
+                                                    required
+                                                    
+                                                    ></span>
                                             </p>
-                                            <p class="form-row form-row-wide" id="billing_company_field"
-                                               data-priority="30"><label for="billing_company" class="">Company name&nbsp;<span
-                                                    class="optional">(optional)</span></label><span
-                                                    class="kaycee-input-wrapper"><input type="text"
-                                                                                             class="input-text "
-                                                                                             name="billing_company"
-                                                                                             id="billing_company"
-                                                                                             placeholder="" value=""
-                                                                                             autocomplete="organization"></span>
-                                            </p>
+                                            
                                             <p class="form-row form-row-wide address-field update_totals_on_change validate-required"
                                                id="billing_country_field" data-priority="40"><label
                                                     for="billing_country" class="">Country&nbsp;<abbr class="required" title="required">*</abbr></label>
@@ -154,9 +151,10 @@
                                                 <select name="billing_country"
                                                         id="billing_country"
                                                         class="country_to_state country_select"
-                                                        autocomplete="country"
                                                         tabindex="-1"
-                                                        aria-hidden="true"><option
+                                                        aria-hidden="true"
+                                                        name="country"
+                                                        required><option
                                                     value="">Select a country…</option><option
                                                     value="AX">Åland Islands</option><option
                                                     value="AF">Afghanistan</option><option value="AL">Albania</option><option
@@ -217,7 +215,7 @@
                                                     value="HT">Haiti</option><option value="HM">Heard Island and McDonald Islands</option><option
                                                     value="HN">Honduras</option><option value="HK">Hong Kong</option><option
                                                     value="HU">Hungary</option><option value="IS">Iceland</option><option
-                                                    value="IN">India</option><option value="ID">Indonesia</option><option
+                                                    value="IN" selected>India</option><option value="ID">Indonesia</option><option
                                                     value="IR">Iran</option><option value="IQ">Iraq</option><option
                                                     value="IE">Ireland</option><option value="IM">Isle of Man</option><option
                                                     value="IL">Israel</option><option value="IT">Italy</option><option
@@ -296,7 +294,7 @@
                                                     value="VI">United States (US) Virgin Islands</option><option
                                                     value="UY">Uruguay</option><option value="UZ">Uzbekistan</option><option
                                                     value="VU">Vanuatu</option><option value="VA">Vatican</option><option
-                                                    value="VE">Venezuela</option><option value="VN" selected="selected">Vietnam</option><option
+                                                    value="VE">Venezuela</option><option value="VN" >Vietnam</option><option
                                                     value="WF">Wallis and Futuna</option><option value="EH">Western Sahara</option><option
                                                     value="YE">Yemen</option><option value="ZM">Zambia</option><option
                                                     value="ZW">Zimbabwe</option></select>
@@ -307,98 +305,54 @@
                                                     for="billing_address_1" class="">Street address&nbsp;<abbr
                                                     class="required" title="required">*</abbr></label><span
                                                     class="kaycee-input-wrapper"><input type="text"
-                                                                                             class="input-text "
-                                                                                             name="billing_address_1"
-                                                                                             id="billing_address_1"
-                                                                                             placeholder="House number and street name"
-                                                                                             value=""
-                                                                                             autocomplete="address-line1"
-                                                                                             data-placeholder="House number and street name"></span>
+                                                    class="input-text "
+                                                    name="address"
+                                                    id="billing_address_1"
+                                                    placeholder="House number and street name"
+                                                    required
+                                                    
+                                                    data-placeholder="House number and street name"></span>
                                             </p>
-                                            <p class="form-row form-row-wide address-field" id="billing_address_2_field"
-                                               data-priority="60" style="display: none;"><label for="billing_address_2"
-                                                                                                class="screen-reader-text">Apartment,
-                                                suite, unit etc.&nbsp;<span
-                                                        class="optional">(optional)</span></label><span
-                                                    class="kaycee-input-wrapper"><input type="text"
-                                                                                             class="input-text "
-                                                                                             name="billing_address_2"
-                                                                                             id="billing_address_2"
-                                                                                             placeholder="Apartment, suite, unit etc. (optional)"
-                                                                                             value=""
-                                                                                             autocomplete="address-line2"
-                                                                                             data-placeholder="Apartment, suite, unit etc. (optional)"></span>
-                                            </p>
+                                            
                                             <p class="form-row form-row-wide address-field validate-postcode"
                                                id="billing_postcode_field" data-priority="65"
                                                data-o_class="form-row form-row-wide address-field validate-postcode">
                                                 <label for="billing_postcode" class="">Postcode / ZIP&nbsp;<span
-                                                        class="optional">(optional)</span></label><span
+                                                        >*</span></label><span
                                                     class="kaycee-input-wrapper"><input type="text"
-                                                                                             class="input-text "
-                                                                                             name="billing_postcode"
-                                                                                             id="billing_postcode"
-                                                                                             placeholder="" value=""
-                                                                                             autocomplete="postal-code"></span>
+                                                    class="input-text "
+                                                    name="postcode"
+                                                    id="billing_postcode"
+                                                    placeholder="" value=""
+                                                    autocomplete="postal-code"></span>
                                             </p>
-                                            <p class="form-row form-row-wide address-field validate-required"
-                                               id="billing_city_field" data-priority="70"
-                                               data-o_class="form-row form-row-wide address-field validate-required">
-                                                <label for="billing_city" class="">Town / City&nbsp;<abbr
-                                                        class="required" title="required">*</abbr></label><span
-                                                    class="kaycee-input-wrapper"><input type="text"
-                                                                                             class="input-text "
-                                                                                             name="billing_city"
-                                                                                             id="billing_city"
-                                                                                             placeholder="" value=""
-                                                                                             autocomplete="address-level2"></span>
-                                            </p>
-                                            <p class="form-row form-row-wide address-field validate-state"
-                                               id="billing_state_field" style="display: none"
-                                               data-o_class="form-row form-row-wide address-field validate-state"><label
-                                                    for="billing_state" class="">State / County&nbsp;<span
-                                                    class="optional">(optional)</span></label><span
-                                                    class="kaycee-input-wrapper"><input type="hidden"
-                                                                                             class="hidden"
-                                                                                             name="billing_state"
-                                                                                             id="billing_state" value=""
-                                                                                             autocomplete="address-level1"
-                                                                                             placeholder=""
-                                                                                             readonly="readonly"></span>
-                                            </p>
+
+                                         
                                             <p class="form-row form-row-wide validate-required validate-phone"
                                                id="billing_phone_field" data-priority="100"><label for="billing_phone"
-                                                                                                   class="">Phone&nbsp;<abbr
+                                                class="">Phone&nbsp;<abbr
                                                     class="required" title="required">*</abbr></label><span
                                                     class="kaycee-input-wrapper"><input type="tel"
-                                                                                             class="input-text "
-                                                                                             name="billing_phone"
-                                                                                             id="billing_phone"
-                                                                                             placeholder="" value=""
-                                                                                             autocomplete="tel"></span>
+                                                    class="input-text "
+                                                    name="phone"
+                                                    id="billing_phone"
+                                                    placeholder=""
+                                                    required></span>
                                             </p>
                                             <p class="form-row form-row-wide validate-required validate-email"
                                                id="billing_email_field" data-priority="110"><label for="billing_email"
-                                                                                                   class="">Email
+                                                class="">Email
                                                 address&nbsp;<abbr class="required"
                                                                    title="required">*</abbr></label><span
                                                     class="kaycee-input-wrapper"><input type="email"
-                                                                                             class="input-text "
-                                                                                             name="billing_email"
-                                                                                             id="billing_email"
-                                                                                             placeholder="" value=""
-                                                                                             autocomplete="email username"></span>
+                                                    class="input-text "
+                                                    name="email"
+                                                    id="billing_email"
+                                                    placeholder=""
+                                                    required></span>
                                             </p></div>
                                     </div>
-                                    <div class="kaycee-account-fields">
-                                        <p class="form-row form-row-wide create-account kaycee-validated">
-                                            <label class="kaycee-form__label kaycee-form__label-for-checkbox checkbox">
-                                                <input class="kaycee-form__input kaycee-form__input-checkbox input-checkbox"
-                                                       id="createaccount" type="checkbox" name="createaccount"
-                                                       value="1"> <span>Create an account?</span>
-                                            </label>
-                                        </p>
-                                    </div>
+                                    
                                 </div>
                                 <div class="col-2">
                                     <div class="kaycee-shipping-fields">
@@ -409,12 +363,12 @@
                                             <p class="form-row notes" id="order_comments_field" data-priority=""><label
                                                     for="order_comments" class="">Order notes&nbsp;<span
                                                     class="optional">(optional)</span></label><span
-                                                    class="kaycee-input-wrapper"><textarea name="order_comments"
-                                                                                                class="input-text "
-                                                                                                id="order_comments"
-                                                                                                placeholder="Notes about your order, e.g. special notes for delivery."
-                                                                                                rows="2"
-                                                                                                cols="5"></textarea></span>
+                                                    class="kaycee-input-wrapper"><textarea name="details"
+                                                    class="input-text "
+                                                    id="order_comments"
+                                                    placeholder="Notes about your order, e.g. special notes for delivery."
+                                                    rows="2"
+                                                    cols="5"></textarea></span>
                                             </p></div>
                                     </div>
                                 </div>
@@ -431,8 +385,10 @@
                                     <tbody>
                                     <tr class="cart_item">
                                         <td class="product-name">
-                                            T-shirt with skirt – Pink&nbsp;&nbsp; <strong class="product-quantity">×
-                                            1</strong></td>
+                                            T-shirt with skirt – Pink&nbsp;&nbsp; <select name="asd" id="">
+                                                <option value="asd">Charm 1</option>
+                                                <option value="asdf">Charm 2</option>
+                                            </select></td>
                                         <td class="product-total">
                                             <span class="kaycee-Price-amount amount"><span
                                                     class="kaycee-Price-currencySymbol">$</span>150.00</span></td>
