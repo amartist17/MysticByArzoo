@@ -17,13 +17,15 @@
     <link rel="shortcut icon" type="image/png" href="/assets/dashboard/dist/images/logos/favicon.png" />
     <!-- Owl Carousel -->
     <link rel="stylesheet" href="/assets/dashboard/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
-    
-    <!-- <link rel="stylesheet" href="/assets/dashboard/dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css"> -->
-    <link href="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.css" rel="stylesheet">
-
     <!-- Core Css -->
     <link  id="themeColors"  rel="stylesheet" href="/assets/dashboard/dist/css/style.min.css" />
- </head>
+    <link rel="stylesheet" href="/assets/dashboard/dist/libs/quill/dist/quill.snow.css">
+    <style>
+      .hidden{
+        display: none;
+      }
+    </style>
+  </head>
   <body>
     <!-- Preloader -->
     <div class="preloader">
@@ -40,7 +42,7 @@
         <!-- Sidebar scroll-->
         <div>
           <div class="brand-logo d-flex align-items-center justify-content-between">
-            <a href="/" class="text-nowrap logo-img">
+            <a href="index.html" class="text-nowrap logo-img">
               <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/dark-logo.svg" class="dark-logo" width="180" alt="" />
               <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/light-logo.svg" class="light-logo"  width="180" alt="" />
             </a>
@@ -49,7 +51,7 @@
             </div>
           </div>
           <!-- Sidebar navigation-->
-          <%- include('nav') %>>
+          <%- include('nav') %>
           <div class="fixed-profile p-3 bg-light-secondary rounded sidebar-ad mt-3">
             <div class="hstack gap-3">
               <div class="john-img">
@@ -73,120 +75,93 @@
       <div class="body-wrapper">
         <!-- Header Start -->
         <%- include('header') %>
-
         <!-- Header End -->
         <div class="container-fluid">
           <%- include('banner') %>
-            <!-- File export -->
-     
             <div class="row">
-              <div class="col-12">
-                <!-- ---------------------
-                            start File export
-                        ---------------- -->
-                <div class="card">
-                  <div class="card-body">
-                    <div class="mb-2">
-                      <h5 class="mb-0">Orders Table</h5>
-                    </div>
-                   
-                    <div class="table-responsive">
-                      <table
-                        id="orders-table" data-page-length='10'
-                        class="table border table-striped table-bordered display text-nowrap"
-                        >
-                        <thead>
-                          <!-- start row -->
-                          <tr>
-                            <th>User Details</th>
-                            <th>Order</th>
-                            <th>Address</th>
-                            <th>Payment</th>
-                            <th>Date</th>
-                            <th>Details</th>
-                          </tr>
-                          <!-- end row -->
-                        </thead>
-                        <tbody>
-                          <!-- start row -->
-                          <% orders.map(order=>{ %>
-                          <tr>
-                            <td><%= order.firstName %> <%= order.lastName %> <br><%= order.phone %> <br>
-                            <%= order.email %></td>
-                            <td>
-                              <table>
-                                <tr>
-                                <th>item</th>
-                                <th>price</th>
-                                <th>size</th>
-                                <th>charm</th>
-                                </tr>
-                                <% sum=0 %>
-                                <% order.items.map(item=>{ sum+=item.price%>
-                                <tr>
-                                  <td>
-                                    <%= item.name %>
-                                  </td>
-                                  <td>
-                                    Rs <%= item.price %>
-                                  </td>
-                                  <td>
-                                    <%= item.size %>
-                                  </td>
-                                  <td>
-                                    <%= item.charm %>
-                                  </td>
-                                </tr>
-                                <% }) %>
-                                <tr>
-                                  <th >Total: </th>
-                                  
-                                  <td >Rs <%= sum %></td>
-                                  <td></td>
-                                  <td></td>
-                                </tr>
-                                
-                            </table>
-                          </td>
-                            
-                            <td><a href="/api/address/<%= order._id %>">Address</a> <br><%= order.country %>  </td>
-                            <td><%= order.payment %></td>
-                            <td>
-                              <%= order.date.toLocaleDateString('en-us', { hour: '2-digit',minute: '2-digit', hour12: false,}) 
-                              %>
-                              <br>
-                              <%= order.date.toLocaleDateString('en-us', { weekday:"short", year:'2-digit', month:"short", day:"numeric"}) 
-                              %></td>
-                            <td><%= order.details %></td>
-                          </tr>
-                          <!-- end row -->
-                          <% }) %>
-                        </tbody>
-                        <tfoot>
-                          <!-- start row -->
-                          <tr>
-                            <th>User Details</th>
-                            <th>Order</th>
-                            <th>Address</th>
-                            <th>Payment</th>
-                            <th>Date</th>
-                            <th>Details</th>
-                          </tr>
-                          <!-- end row -->
-                        </tfoot>
-                      </table>
-                    </div>
-                  </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12">
+                          
+                          <div class="card">
+                            <div class="card-body">
+                              <h5 class="mb-3">Add Post</h5>
+                              <form class="post-form">
+                                <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show hidden" role="alert">
+                                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                  <strong>Success - </strong> Post Added
+                                </div>
+                                <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show hidden" role="alert">
+                                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                  <strong>Error - </strong> Error Occurred
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="tb-fname"
+                                        name="link"
+                                        placeholder="Enter Post link here"
+                                      />
+                                      <label for="tb-fname">Post Link</label>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="tb-fname"
+                                        name="user"
+                                        placeholder="Enter User name here"
+                                      />
+                                      <label for="tb-fname">Username</label>
+                                    </div>
+                                  </div>
+                                 
+                                      <div class="form-group mb-4">
+                                        <label for="exampleFormControlSelect1">Image</label>
+                                        <!-- <input class="form-control" name="files" type="file" id="formFile" multiple> -->
+                                        <textarea name="image" class="form-control" rows="3"></textarea>
+                                        <small id="name" class="badge badge-default text-info font-medium bg-light-info form-text">Please enter single link</small>
+
+                                        
+                                    </div>
+                                    
+                                    </div>
+                                    
+                                  </div>
+                                  <div class="col-12 ">
+                                    <div class="d-md-flex align-items-center mt-3">
+                                      
+                                      <div class="ms-auto mt-3 mt-md-0">
+                                        <button
+                                          type="submit"
+                                          class="btn btn-info font-medium rounded-pill px-4"
+                                        >
+                                          <div class="d-flex align-items-center">
+                                            <i class="ti ti-send me-2 fs-4"></i>
+                                            Submit
+                                          </div>
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
                 </div>
-                <!-- ---------------------
-                            end File export
-                        ---------------- -->
-              </div>
             </div>
+          </div>
+        </div>
         <!-- container-fluid over -->
       
     </div>
-   
+
+
     <!-- Customizer -->
    <button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center customizer-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
     <i class="ti ti-settings fs-7" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Settings"></i>
@@ -236,7 +211,7 @@
           </ul>
         </div>
       </div>
-      
+     
       <div class="container-option pb-4">
         <h6 class="fw-semibold fs-4 mb-1">Container Option</h6>
         <div class="d-flex align-items-center gap-3 my-3">
@@ -292,25 +267,48 @@
     <!-- current page js files -->
     <script src="/assets/dashboard/dist/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="/assets/dashboard/dist/js/dashboard2.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/v/zf/jszip-3.10.1/dt-1.13.6/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/cr-1.7.0/r-2.5.0/datatables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
-   
+    <script src="/assets/dashboard/dist/js/custom.js"></script>
+    <script src="/assets/dashboard/dist/libs/prismjs/prism.js"></script>
+    <script src="/assets/dashboard/dist/libs/quill/dist/quill.min.js"></script>
+
     <script>
-      $(document).ready( function () {
-    $('#orders-table').DataTable({
-      // responsive: true,
-      dom: 'Bfrtip',
-      buttons: [
-      'copy', 'excel', 'pdf'
-    ],
-    pagingType: 'first_last_numbers'
-    });
-    $(".buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel"
-).addClass("btn btn-primary mr-1");
-} );
-    </script>
+      $(document).ready(function () {
+          const form = $('.post-form');
+          const successAlert = $('.alert-success');
+          const errorAlert = $('.alert-danger');
+      
+          form.submit(function (e) {
+              e.preventDefault();
+      
+              // Serialize form data
+              const formData = form.serialize();
+      
+              $.ajax({
+                  type: 'POST',
+                  url: '/api/add-post',
+                  data: formData,
+                  success: function (data) {
+                    // console.log(data)
+                    
+                          // Show success message
+                          form[0].reset();
+                          successAlert.removeClass('hidden');
+                          setTimeout(function () {
+                              successAlert.addClass('hidden');
+                          }, 5000);
+                      
+                  },
+                  error: function (error) {
+                    errorAlert.removeClass('hidden');
+                          setTimeout(function () {
+                              errorAlert.addClass('hidden');
+                          }, 5000);
+                      console.error('Error:', error);
+                  }
+              });
+          });
+      });
+      </script>
   </body>
 
 </html>

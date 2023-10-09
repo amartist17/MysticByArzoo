@@ -5,11 +5,11 @@
               <div class="kaycee-menu-wapper"></div>
               <div class="header-middle-inner">
                   
-                  <div class="header-logo-nav">
+                  <div class="header-logo-nav" style="display: flex; align-items: center;">
                       <div class="header-logo">
                           <a href="/" style="font-size: 36px; font-weight: 800;">
-                            <!-- <img alt="Kaycee" src="/assets/images/logo.png" class="logo"> -->
-                            LOGO
+                            <img alt="Kaycee" src="/assets/logo/logo.png" class="logo" style="height: 60px;">
+                            <!-- LOGO -->
                                                   </a>
                       </div>
                       <div class="box-header-nav menu-nocenter">
@@ -36,11 +36,6 @@
                                                           </li>
                                                           <li>
                                                               <a href="/shop/bracelets" target="_self">
-                                                                  <!-- <span class="image">
-                                                                      <img src="/assets/images/label-new.jpg"
-                                                                           class="attachment-full size-full"
-                                                                           alt="img">
-                                                                  </span> -->
                                                                   Bracelets
                                                               </a>
                                                           </li>
@@ -56,26 +51,26 @@
                                                       <h4 class="title">Crystals </h4>
                                                       <ul class="listitem-list">
                                                           <li>
-                                                              <a href="/shop" target="_self"> Clusters </a>
+                                                              <a href="/shop/clusters" target="_self"> Clusters </a>
                                                           </li>
                                                           <li>
-                                                              <a href="/shop" target="_self"> Tumbles </a>
+                                                              <a href="/shop/tumbles" target="_self"> Tumbles </a>
                                                           </li>
                                                           <li>
-                                                              <a href="/shop" target="_self"> Raw Form </a>
+                                                              <a href="/shop/rawform" target="_self"> Raw Form </a>
                                                           </li>
                                                           <li>
-                                                              <a href="/shop" target="_self"> Tower/wands </a>
+                                                              <a href="/shop/towerwands" target="_self"> Tower/wands </a>
                                                           </li>
                                                           <li>
-                                                            <a href="/shop" target="_self"> Sphere </a>
+                                                            <a href="/shop/sphere" target="_self"> Sphere </a>
                                                         </li>
                                                         <li>
-                                                            <a href="/shop" target="_self"> Roller/Guasha
+                                                            <a href="/shop/rollerguasha" target="_self"> Roller/Guasha
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="/shop" target="_self"> Free Form
+                                                            <a href="/shop/freeform" target="_self"> Free Form
                                                             </a>
                                                         </li>
                                                       </ul>
@@ -92,52 +87,65 @@
                                                         Apothecary </h4>
                                                       <ul class="listitem-list">
                                                           <li>
-                                                              <a href="/shop" target="_self"> Herbs & Smudging
+                                                              <a href="/shop/herbsandsmudging" target="_self"> Herbs & Smudging
                                                             </a>
                                                           </li>
                                                           <li>
-                                                              <a href="/shop" target="_self"> Candles
+                                                              <a href="/shop/candles" target="_self"> Candles
                                                             </a>
                                                           </li>
                                                           <li>
-                                                              <a href="/shop" target="_self"> Detox Bath
+                                                              <a href="/shop/detoxbath" target="_self"> Detox Bath
                                                             </a>
                                                           </li>
                                                           
                                                       </ul>
                                                   </div>
                                               </div>
-                                              <div class="kaycee-listitem style-01">
+                                              <!-- <div class="kaycee-listitem style-01">
                                                 <div class="listitem-inner">
                                                     <h4 class="title">
                                                       Sale</h4>
                                                   
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="kaycee-listitem style-01">
                                                 <div class="listitem-inner">
+                                                    
                                                     <h4 class="title">
                                                       For Men
                                                   </h4>
+                                                  <ul class="listitem-list">
+                                                    <li>
+                                                        <a href="/shop/men" target="_self"> Men Exclusives
+                                                      </a>
+                                                    </li>
+                                                    
+                                                    
+                                                </ul>
                                                    
                                                 </div>
                                             </div>
                                               <div class="kaycee-listitem style-01">
                                                   <div class="listitem-inner">
                                                       <h4 class="title">
-                                                        Singing Bowls
+                                                        Other Categories
                                                     </h4>
-                                                     
+                                                    <ul class="listitem-list">
+                                                        <li>
+                                                            <a href="/shop/singingbowls" target="_self"> Singing Bowls
+                                                          </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/shop/exclusivepremiumcollection" target="_self"> Exclusive Premium Collection
+                                                          </a>
+                                                        </li>
+                                                        
+                                                        
+                                                    </ul>
                                                   </div>
                                               </div>
-                                              <div class="kaycee-listitem style-01">
-                                                <div class="listitem-inner">
-                                                    <h4 class="title">
-                                                        Exclusive Premium Collection
-                                                  </h4>
-                                                   
-                                                </div>
-                                            </div>
+                                              
                                           </div>
                                       </div>
                                   </div>
@@ -198,17 +206,17 @@
                                                   class="minicart-number-items"><%= cart.length %></span></h3>
                                           <ul class="kaycee-mini-cart cart_list product_list_widget">
                                             <% let sum =0 %>
-                                              <% cart.forEach(item => { sum+= item.discountedPrice%>
+                                              <% cart.forEach(item => { sum+= parseInt(item.price)%>
                                                 <li class="kaycee-mini-cart-item mini_cart_item">
-                                                    <a href="#"  data-productId="<%= item._id %>" class="remove remove_from_cart_button remove-from-cart-header">×</a>
-                                                    <a href="/product/<%= item._id %>">
+                                                    <a href="#"  data-productId="<%= item.productId %>" class="remove remove_from_cart_button remove-from-cart-header">×</a>
+                                                    <a href="/product/<%= item.productId %>">
                                                         <img src="/assets/images/apro134-1-600x778.jpg"
                                                              class="attachment-kaycee_thumbnail size-kaycee_thumbnail"
                                                              alt="img" width="600" height="778"><%= item.name %>&nbsp;
                                                     </a>
                                                     <span class="quantity">1 × <span
                                                             class="kaycee-Price-amount amount"><span
-                                                            class="kaycee-Price-currencySymbol">Rs</span><%= item.discountedPrice %></span></span>
+                                                            class="kaycee-Price-currencySymbol">Rs</span><%= item.price %></span></span>
                                                 </li>
                                               <% }) %>
                                           </ul>
@@ -241,51 +249,14 @@
                   <span></span>
               </a>
           </div>
-          <div class="header-search kaycee-dropdown">
-              <div class="header-search-inner" data-kaycee="kaycee-dropdown">
-                  <a href="#" class="link-dropdown block-link">
-                      <span class="flaticon-magnifying-glass-1"></span>
-                  </a>
-              </div>
-              <div class="block-search">
-                  <form role="search" method="get"
-                        class="form-search block-search-form kaycee-live-search-form">
-                      <div class="form-content search-box results-search">
-                          <div class="inner">
-                              <input autocomplete="off" class="searchfield txt-livesearch input" name="s" value=""
-                                     placeholder="Search here..." type="text">
-                          </div>
-                      </div>
-                      <input name="post_type" value="product" type="hidden">
-                      <input name="taxonomy" value="product_cat" type="hidden">
-                      <div class="category">
-                          <select title="product_cat" name="product_cat"
-                                  class="category-search-option" tabindex="-1"
-                          >
-                              <option value="0">All Categories</option>
-                              <option class="level-0" value="light">Earrings</option>
-                              <option class="level-0" value="chair">Pendants</option>
-                              <option class="level-0" value="table">Bangles</option>
-                              <option class="level-0" value="bed">Finger Rings</option>
-                              <option class="level-0" value="new-arrivals">New arrivals</option>
-                              <option class="level-0" value="lamp">Chains</option>
-                              <option class="level-0" value="specials">Neckwear</option>
-                              <option class="level-0" value="sofas">Bracelets</option>
-                          </select>
-                      </div>
-                      <button type="submit" class="btn-submit">
-                          <span class="flaticon-magnifying-glass-1"></span>
-                      </button>
-                  </form><!-- block search -->
-              </div>
-          </div>
+          
          
       </div>
       <div class="header-mobile-mid">
           <div class="header-logo">
-              <a href="index.html">
-                <!-- <img alt="Kaycee" src="/assets/images/logo.png" class="logo"> -->
-              LOGO
+              <a href="/">
+                <img alt="Kaycee" src="/assets/logo/logo.png" class="logo" style="height: 60px;">
+              
               </a>
           </div>
       </div>
@@ -293,7 +264,7 @@
           <div class="header-control-inner">
               <div class="meta-dreaming">
                   <div class="menu-item block-user block-dreaming kaycee-dropdown">
-                      <a class="block-link" href="my-account.html">
+                      <a class="block-link" href="/dashboard">
                           <span class="flaticon-profile"></span>
                       </a>
                       <ul class="sub-menu">

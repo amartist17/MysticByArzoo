@@ -7,17 +7,18 @@
                       <div class="newsletter-wrap">
                           <h3 class="title">Newsletter<span></span></h3>
                           <h4 class="subtitle">Get Discount 30% Off</h4>
-                          <p class="desc">Suspendisse netus proin eleifend fusce sollicitudin potenti vel magnis
-                              nascetur</p>
+                          <p class="desc">Receive exclusive updates, news, and offers—subscribe now for more!</p>
                       </div>
                   </div>
                   <div class="newsletter-form-wrap">
                       <div class="newsletter-form-inner">
+                        <form action="/api/add-to-newsletter" method="post" enctype="application/x-www-form-urlencoded">
                           <input class="email email-newsletter" name="email" placeholder="Enter your email ..."
                                  type="email">
-                          <a href="#" class="button btn-submit submit-newsletter">
+                          <button type="submit" href="#" class="button btn-submit submit-newsletter">
                               <span class="text">Subscribe</span>
-                          </a>
+                          </button>
+                        </form>
                       </div>
                   </div>
               </div>
@@ -28,7 +29,7 @@
       <div class="container">
           <div class="row">
               <div class="col-md-4">
-                  <p>© Copyright 2023 <a href="#">LOGO</a>. All Rights Reserved.</p>
+                  <p style="white-space: nowrap;">© Copyright <span id="footer-year"></span> <a href="/">MyssticbyArzoo</a>. All Rights Reserved.</p>
               </div>
               <div class="col-md-4" style="text-align: center;">
                 <p>Developed By <a href="#">Amardeep Singh</a></p>
@@ -75,16 +76,9 @@
               Home
           </a>
       </div>
-      <!-- <div class="footer-device-mobile-item device-home device-wishlist">
-          <a href="wishlist.html">
-        <span class="icon">
-          <span class="flaticon-heart"></span>
-        </span>
-              Wishlist
-          </a>
-      </div> -->
+      
       <div class="footer-device-mobile-item device-home device-cart">
-          <a href="cart.html">
+          <a href="/cart">
         <span class="icon">
           <span class="flaticon-shopping-bag-1"></span>
           <span class="count-icon">
@@ -94,13 +88,9 @@
               <span class="text">Cart</span>
           </a>
       </div>
-      <div class="footer-device-mobile-item device-home device-user">
-          <a href="my-account.html">
-        <span class="icon">
-          <span class="flaticon-profile"></span>
-        </span>
-              Account
-          </a>
-      </div>
+      
   </div>
 </div>
+<script>
+    document.getElementById('footer-year').innerText = new Date().getFullYear();
+  </script>

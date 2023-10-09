@@ -92,7 +92,7 @@
                                      class="img-responsive attachment-370x370 size-370x370" alt="img"> </a>
                         </figure>
                         <h3 class="title">
-                            <a href="/shop/apothecary" tabindex="0">
+                            <a href="/shop/herbssndsmudging" tabindex="0">
                                 Apothecary </a>
                         </h3>
                     </div>
@@ -100,7 +100,7 @@
                 <div class="categories-item rows-space-0 post-740 page type-page status-publish hentry">
                     <div class="categories-inner">
                         <figure class="categories-thumb">
-                            <a href="/shop/singing-bowls" tabindex="0">
+                            <a href="/shop/clusters" tabindex="0">
                                 <img src="/assets/images/cat6.png"
                                      class="img-responsive attachment-370x370 size-370x370" alt="img"> </a>
                         </figure>
@@ -192,7 +192,7 @@
                                     </a>
                                      <div class="flash">
                                        <!-- <span class="onsale"><span class="number">-14%</span></span>-->
-                                       <% if (item.charms.length>0) { %>
+                                       <% if (item.charms && item.charms.length>0) { %>
                                             <span class="onsale"><span class="text">With Charm</span></span>
                                             <% } %>
                                     </div> 
@@ -205,7 +205,7 @@
                                 </div>
                                 <div class="product-info equal-elem">
                                     <h3 class="product-name product_title">
-                                        <a href="#"><%= item.name %> <br> <strong><%= item.material %></strong></a>
+                                        <a href="/product/<%= item._id %>"><%= item.name %> <br> <strong><%= item.material %></strong></a>
                                     </h3>
                                     <span class="price"><del><span class="kaycee-Price-amount amount"><span
                                             class="kaycee-Price-currencySymbol">Rs</span><%= item.price %></span></del> <ins><span

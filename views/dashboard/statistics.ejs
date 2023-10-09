@@ -17,9 +17,10 @@
     <link rel="shortcut icon" type="image/png" href="/assets/dashboard/dist/images/logos/favicon.png" />
     <!-- Owl Carousel -->
     <link rel="stylesheet" href="/assets/dashboard/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
-    
-    <!-- <link rel="stylesheet" href="/assets/dashboard/dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css"> -->
-    <link href="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.css" rel="stylesheet">
+<!--     
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/v/zf/jszip-3.10.1/dt-1.13.6/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/cr-1.7.0/r-2.5.0/datatables.min.css" rel="stylesheet">
+      -->
 
     <!-- Core Css -->
     <link  id="themeColors"  rel="stylesheet" href="/assets/dashboard/dist/css/style.min.css" />
@@ -78,115 +79,76 @@
         <div class="container-fluid">
           <%- include('banner') %>
             <!-- File export -->
-     
             <div class="row">
-              <div class="col-12">
-                <!-- ---------------------
-                            start File export
-                        ---------------- -->
-                <div class="card">
-                  <div class="card-body">
-                    <div class="mb-2">
-                      <h5 class="mb-0">Orders Table</h5>
-                    </div>
-                   
-                    <div class="table-responsive">
-                      <table
-                        id="orders-table" data-page-length='10'
-                        class="table border table-striped table-bordered display text-nowrap"
-                        >
-                        <thead>
-                          <!-- start row -->
-                          <tr>
-                            <th>User Details</th>
-                            <th>Order</th>
-                            <th>Address</th>
-                            <th>Payment</th>
-                            <th>Date</th>
-                            <th>Details</th>
-                          </tr>
-                          <!-- end row -->
-                        </thead>
-                        <tbody>
-                          <!-- start row -->
-                          <% orders.map(order=>{ %>
-                          <tr>
-                            <td><%= order.firstName %> <%= order.lastName %> <br><%= order.phone %> <br>
-                            <%= order.email %></td>
-                            <td>
-                              <table>
-                                <tr>
-                                <th>item</th>
-                                <th>price</th>
-                                <th>size</th>
-                                <th>charm</th>
-                                </tr>
-                                <% sum=0 %>
-                                <% order.items.map(item=>{ sum+=item.price%>
-                                <tr>
-                                  <td>
-                                    <%= item.name %>
-                                  </td>
-                                  <td>
-                                    Rs <%= item.price %>
-                                  </td>
-                                  <td>
-                                    <%= item.size %>
-                                  </td>
-                                  <td>
-                                    <%= item.charm %>
-                                  </td>
-                                </tr>
-                                <% }) %>
-                                <tr>
-                                  <th >Total: </th>
-                                  
-                                  <td >Rs <%= sum %></td>
-                                  <td></td>
-                                  <td></td>
-                                </tr>
-                                
-                            </table>
-                          </td>
-                            
-                            <td><a href="/api/address/<%= order._id %>">Address</a> <br><%= order.country %>  </td>
-                            <td><%= order.payment %></td>
-                            <td>
-                              <%= order.date.toLocaleDateString('en-us', { hour: '2-digit',minute: '2-digit', hour12: false,}) 
-                              %>
-                              <br>
-                              <%= order.date.toLocaleDateString('en-us', { weekday:"short", year:'2-digit', month:"short", day:"numeric"}) 
-                              %></td>
-                            <td><%= order.details %></td>
-                          </tr>
-                          <!-- end row -->
-                          <% }) %>
-                        </tbody>
-                        <tfoot>
-                          <!-- start row -->
-                          <tr>
-                            <th>User Details</th>
-                            <th>Order</th>
-                            <th>Address</th>
-                            <th>Payment</th>
-                            <th>Date</th>
-                            <th>Details</th>
-                          </tr>
-                          <!-- end row -->
-                        </tfoot>
-                      </table>
+                <div class="col-md-8 col-lg-6 d-flex align-items-stretch">
+                    <div class="card w-100">
+                      <div class="card-body">
+                        <h5 class="card-title fw-semibold">Statistics</h5>
+                        <p class="card-subtitle mb-7">Aggregate Data</p>
+                        <div class="position-relative">
+                          <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="d-flex">
+                              <div class="p-8 bg-light-primary rounded-2 d-flex align-items-center justify-content-center me-6">
+                                <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-paypal2.svg" alt="" class="img-fluid" width="24" height="24">
+                              </div>
+                              <div>
+                                <h6 class="mb-1 fs-4 fw-semibold">Most Sold This Month</h6>
+                                <p class="fs-3 mb-0"><%= (aggregate.mostSoldItemThisMonth?.totalSold !== undefined ? aggregate.mostSoldItemThisMonth.totalSold : 0) %> Times</p>
+
+                              </div>
+                            </div>
+                            <h6 class="mb-0 fw-semibold"><%= (aggregate.mostSoldItemThisMonth?.name !== undefined ? aggregate.mostSoldItemThisMonth.name : "None") %></h6>
+
+                          </div>
+                          <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="d-flex">
+                              <div class="p-8 bg-light-success rounded-2 d-flex align-items-center justify-content-center me-6">
+                                <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-wallet.svg" alt="" class="img-fluid" width="24" height="24">
+                              </div>
+                              <div>
+                                <h6 class="mb-1 fs-4 fw-semibold">Total Income</h6>
+                                <p class="fs-3 mb-0">This Month</p>
+                              </div>
+                            </div>
+                            <h6 class="mb-0 fw-semibold text-muted">Rs <%= aggregate.totalIncomeThisMonth %></h6>
+                          </div>
+                          <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="d-flex">
+                              <div class="p-8 bg-light-warning rounded-2 d-flex align-items-center justify-content-center me-6">
+                                <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-credit-card.svg" alt="" class="img-fluid" width="24" height="24">
+                              </div>
+                              <div>
+                                <h6 class="mb-1 fs-4 fw-semibold">Total Items Sold</h6>
+                                <p class="fs-3 mb-0"></p>
+                              </div>
+                            </div>
+                            <h6 class="mb-0 fw-semibold"><%= aggregate.totalItemsSold %></h6>
+                          </div>
+                          <div class="d-flex align-items-center justify-content-between mb-7 pb-1">
+                            <div class="d-flex">
+                              <div class="p-8 bg-light-danger rounded-2 d-flex align-items-center justify-content-center me-6">
+                                <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-pie2.svg" alt="" class="img-fluid" width="24" height="24">
+                              </div>
+                              <div>
+                                <h6 class="mb-1 fs-4 fw-semibold">Most Sold Charm</h6>
+                                <p class="fs-3 mb-0"><%= (aggregate.mostSoldCharms?.totalSold !== undefined ? aggregate.mostSoldCharms.totalSold : 0) %> Times</p>
+
+                              </div>
+                            </div>
+                            <h6 class="mb-0 fw-semibold text-muted"><%= (aggregate.mostSoldCharms?._id !== undefined ? aggregate.mostSoldCharms._id : "None") %>
+                            </h6>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <!-- ---------------------
-                            end File export
-                        ---------------- -->
-              </div>
             </div>
         <!-- container-fluid over -->
       
     </div>
-   
+    <!--  Shopping Cart -->
+    
+    
     <!-- Customizer -->
    <button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center customizer-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
     <i class="ti ti-settings fs-7" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Settings"></i>
@@ -292,25 +254,8 @@
     <!-- current page js files -->
     <script src="/assets/dashboard/dist/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="/assets/dashboard/dist/js/dashboard2.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/v/zf/jszip-3.10.1/dt-1.13.6/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/cr-1.7.0/r-2.5.0/datatables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
-   
-    <script>
-      $(document).ready( function () {
-    $('#orders-table').DataTable({
-      // responsive: true,
-      dom: 'Bfrtip',
-      buttons: [
-      'copy', 'excel', 'pdf'
-    ],
-    pagingType: 'first_last_numbers'
-    });
-    $(".buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel"
-).addClass("btn btn-primary mr-1");
-} );
-    </script>
+
+
   </body>
 
 </html>

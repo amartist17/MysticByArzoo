@@ -106,11 +106,20 @@
                                 <form  class="variations_form cart">
                                     
                                     
+                                    <% if (product.category == "bracelets") { %>
                                         <label for="">Size (in cms)</label>
                                     &nbsp
                                     <label>
                                         <input class="size-input" type="text" name="size" id="" style="width: 50%;">
                                     </label>
+                                     
+                                    <% }else{ %>
+
+                                        <input class="size-input" type="text" name="size" id="" value="0" style="display: none;">
+
+
+                                        <% } %>
+
                                     <!-- &nbsp;
                                     &nbsp;
                                     &nbsp;
@@ -134,7 +143,7 @@
                                     <div class="single_variation_wrap">
                                         <div class="kaycee-variation single_variation"></div>
                                         <div class="kaycee-variation-add-to-cart variations_button ">
-                                            <button type="submit" data-id="<%= product._id %>"
+                                            <button type="submit" data-id="<%= product._id %>" data-price="<%= product.discountedPrice%>" data-name="<%= product.name %>"
                                                     class="single_add_to_cart_button button alt kaycee-variation-selection-needed addToCart">
                                                 Add to cart
                                             </button>
@@ -380,9 +389,11 @@
             $('.addToCart').click(function(event){
                 event.preventDefault();
                 let size = $('.size-input').val()
+                let price = $(this).attr("data-price")
+                let name = $(this).attr("data-name")
+                let productId = $(this).attr("data-id")
                 
-                
-                // Check if the input is empty
+
                 if (size === '') {
                 // Add a red border
                 $('.size-input').css('border', '1px solid red');
@@ -395,18 +406,17 @@
                 let charm=$('.charm-input').val()
                 let data
                 if(charm !== undefined){
-                    data = {productId:$(this).attr("data-id"), size, charm}
+                    data = {productId,name,price, size, charm}
                 }else{
-                    data = {productId:$(this).attr("data-id"), size}
+                    data = {productId,name,price, size}
                 }
-                console.log(data)
-                console.log($(this).attr("data-id"))
+                // console.log(data)
+                // console.log($(this).attr("data-id"))
                 $.ajax({
                     type: "POST",
                     url: window.location.origin + "/api/add-to-cart",
-                    data: {productId:$(this).attr("data-id"), size, charm},
+                    data: data,
                     success: ()=>{
-                        // alert($(this).attr("data-id"))
                         location.reload();
                     },
                     });

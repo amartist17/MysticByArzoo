@@ -92,72 +92,32 @@
                    
                     <div class="table-responsive">
                       <table
-                        id="orders-table" data-page-length='10'
+                        id="newsletter-table" data-page-length='10'
                         class="table border table-striped table-bordered display text-nowrap"
                         >
                         <thead>
                           <!-- start row -->
                           <tr>
-                            <th>User Details</th>
-                            <th>Order</th>
-                            <th>Address</th>
-                            <th>Payment</th>
                             <th>Date</th>
-                            <th>Details</th>
+                            <th>Email</th>
+                            
                           </tr>
                           <!-- end row -->
                         </thead>
                         <tbody>
                           <!-- start row -->
-                          <% orders.map(order=>{ %>
+                          <% newsletters.map(nl=>{ %>
                           <tr>
-                            <td><%= order.firstName %> <%= order.lastName %> <br><%= order.phone %> <br>
-                            <%= order.email %></td>
                             <td>
-                              <table>
-                                <tr>
-                                <th>item</th>
-                                <th>price</th>
-                                <th>size</th>
-                                <th>charm</th>
-                                </tr>
-                                <% sum=0 %>
-                                <% order.items.map(item=>{ sum+=item.price%>
-                                <tr>
-                                  <td>
-                                    <%= item.name %>
-                                  </td>
-                                  <td>
-                                    Rs <%= item.price %>
-                                  </td>
-                                  <td>
-                                    <%= item.size %>
-                                  </td>
-                                  <td>
-                                    <%= item.charm %>
-                                  </td>
-                                </tr>
-                                <% }) %>
-                                <tr>
-                                  <th >Total: </th>
-                                  
-                                  <td >Rs <%= sum %></td>
-                                  <td></td>
-                                  <td></td>
-                                </tr>
-                                
-                            </table>
-                          </td>
+                                <%= nl.date.toLocaleDateString('en-us', { hour: '2-digit',minute: '2-digit', hour12: false,}) 
+                                %>
+                                <br>
+                                <%= nl.date.toLocaleDateString('en-us', { weekday:"short", year:'2-digit', month:"short", day:"numeric"}) 
+                                %></td>
+                            <td><%= nl.email %></td>
                             
-                            <td><a href="/api/address/<%= order._id %>">Address</a> <br><%= order.country %>  </td>
-                            <td><%= order.payment %></td>
-                            <td>
-                              <%= order.date.toLocaleDateString('en-us', { hour: '2-digit',minute: '2-digit', hour12: false,}) 
-                              %>
-                              <br>
-                              <%= order.date.toLocaleDateString('en-us', { weekday:"short", year:'2-digit', month:"short", day:"numeric"}) 
-                              %></td>
-                            <td><%= order.details %></td>
+                            
+                            
                           </tr>
                           <!-- end row -->
                           <% }) %>
@@ -165,12 +125,8 @@
                         <tfoot>
                           <!-- start row -->
                           <tr>
-                            <th>User Details</th>
-                            <th>Order</th>
-                            <th>Address</th>
-                            <th>Payment</th>
                             <th>Date</th>
-                            <th>Details</th>
+                            <th>Email</th>
                           </tr>
                           <!-- end row -->
                         </tfoot>
@@ -299,7 +255,7 @@
    
     <script>
       $(document).ready( function () {
-    $('#orders-table').DataTable({
+    $('#newsletter-table').DataTable({
       // responsive: true,
       dom: 'Bfrtip',
       buttons: [

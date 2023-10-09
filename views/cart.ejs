@@ -54,7 +54,7 @@
                                     <th class="product-remove">&nbsp;</th>
                                     <th class="product-thumbnail">&nbsp;</th>
                                     <th class="product-name">Product</th>
-                                    <th class="product-price">Price</th>
+                                    <!-- <th class="product-price">Price</th> -->
                                     <th class="product-subtotal">Discounted Price</th>
                                 </tr>
                                 </thead>
@@ -64,7 +64,7 @@
                                     <% cart.forEach(item => { sum+= item.discountedPrice%>
                                         <tr class="kaycee-cart-form__cart-item cart_item">
                                             <td class="product-remove">
-                                                <a href="#"  data-item="<%= item._id %>"
+                                                <a href="#"  data-item="<%= item.productId %>"
                                                    class="remove remove-from-cart" aria-label="Remove this item" 
                                                    data-product_sku="885B712">×</a></td>
                                             <td class="product-thumbnail">
@@ -73,11 +73,11 @@
                                                         class="attachment-kaycee_thumbnail size-kaycee_thumbnail"
                                                         alt="img" width="600" height="778"></a></td>
                                             <td class="product-name" data-title="Product">
-                                                <a href="/product/<%= item._id %>"><%= item.name %></a></td>
-                                            <td class="product-price" data-title="Price">
+                                                <a href="/product/<%= item.productId %>"><%= item.name %></a></td>
+                                            <!-- <td class="product-price" data-title="Price">
                                                 <span class="kaycee-Price-amount amount" style="color: grey;"><span
                                                         class="kaycee-Price-currencySymbol">Rs</span><%= item.price %></span></td>
-                                           
+                                            -->
                                             <td class="product-subtotal" data-title="Total">
                                                 <span class="kaycee-Price-amount amount"><span
                                                         class="kaycee-Price-currencySymbol">Rs</span><%= item.discountedPrice %></span></td>

@@ -144,6 +144,7 @@
                 </div>
             </div>
             <div class=" auto-clear kaycee-products">
+                
                 <ul class="row products columns-3">
 
                     <% bestSeller.map(item=>{ %>
@@ -200,7 +201,7 @@
             <div class="kaycee-heading style-01">
                 <div class="heading-inner">
                     <h3 class="title">Categories<span></span></h3>
-                    <!-- <div class="subtitle">Our products are perfect for every occasion -->
+                    <div class="subtitle">Checkout all the categories
                     </div>
                 </div>
             </div>
@@ -215,7 +216,7 @@
                                 <div class="banner-content">
                                     <div class="title-wrap">
                                         <h6 class="title">
-                                            <a target="_self" href="#">Jewellery</a>
+                                            <a target="_self" href="/shop/rings">Jewellery</a>
                                         </h6>
                                     </div>
                                 </div>
@@ -233,7 +234,7 @@
                                 <div class="banner-content">
                                     <div class="title-wrap">
                                         <h6 class="title">
-                                            <a target="_self" href="#">Crystals</a>
+                                            <a target="_self" href="/shop/clusters">Crystals</a>
                                         </h6>
                                     </div>
                                 </div>
@@ -251,7 +252,7 @@
                                 <div class="banner-content">
                                     <div class="title-wrap">
                                         <h6 class="title">
-                                            <a target="_self" href="#">Apothecary</a>
+                                            <a target="_self" href="/shop/herbsandsmudging">Apothecary</a>
                                         </h6>
                                     </div>
                                 </div>
@@ -269,7 +270,7 @@
                                 <div class="banner-content">
                                     <div class="title-wrap">
                                         <h6 class="title">
-                                            <a target="_self" href="#">Singing Bowls</a>
+                                            <a target="_self" href="/shop/singingbowls">Singing Bowls</a>
                                         </h6>
                                     </div>
                                 </div>
@@ -287,7 +288,7 @@
                                 <div class="banner-content">
                                     <div class="title-wrap">
                                         <h6 class="title">
-                                            <a target="_self" href="#">Exclusive Premium Collection</a>
+                                            <a target="_self" href="/shop/exclusivepremiumcollection">Exclusive Premium Collection</a>
                                         </h6>
                                     </div>
                                 </div>
@@ -305,7 +306,7 @@
                                 <div class="banner-content">
                                     <div class="title-wrap">
                                         <h6 class="title">
-                                            <a target="_self" href="#">For Men</a>
+                                            <a target="_self" href="/shop/men">For Men</a>
                                         </h6>
                                     </div>
                                 </div>
@@ -370,36 +371,7 @@
             </div>
         </div>
     </div>
-    <div class="section-038">
-        <div class="kaycee-banner style-07 left-center">
-            <div class="banner-inner">
-                <figure class="banner-thumb">
-                    <img src="/assets/images/banner28.jpg"
-                         class="attachment-full size-full" alt="img"></figure>
-                <div class="banner-info container">
-                    <div class="banner-content">
-                        <div class="title-wrap">
-                            <div class="banner-label">
-                                30 Nov - 03 Dec
-                            </div>
-                            <h6 class="title">
-                                New Collection </h6>
-                        </div>
-                        <div class="cate">
-                            50% Off / Selected items
-                        </div>
-                        <div class="button-wrap">
-                            <div class="subtitle">
-                                Mus venenatis habitasse leo malesuada lacus commodo
-                            </div>
-                            <a class="button" target="_self" href="#"><span>Shop now</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-   <div class="section-014" style="margin-top: 32px;">
+  <div class="section-014" style="margin-top: 32px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-lg-3">
@@ -461,26 +433,37 @@
     </div>
     <div class="section-008">
         <div class="kaycee-instagram style-01">
+            <div class="kaycee-heading style-01">
+                <div class="heading-inner">
+                    <h3 class="title">Instagram Posts<span></span></h3>
+                    <div class="subtitle">Mention Us On Your Instagram
+                    </div>
+                </div>
+            </div>
             <div class="instagram-owl owl-slick"
                  data-slick="{&quot;arrows&quot;:false,&quot;slidesMargin&quot;:15,&quot;dots&quot;:false,&quot;infinite&quot;:false,&quot;speed&quot;:300,&quot;slidesToShow&quot;:5,&quot;rows&quot;:1}"
                  data-responsive="[{&quot;breakpoint&quot;:480,&quot;settings&quot;:{&quot;slidesToShow&quot;:2,&quot;slidesMargin&quot;:&quot;10&quot;}},{&quot;breakpoint&quot;:768,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesMargin&quot;:&quot;10&quot;}},{&quot;breakpoint&quot;:992,&quot;settings&quot;:{&quot;slidesToShow&quot;:4,&quot;slidesMargin&quot;:&quot;15&quot;}},{&quot;breakpoint&quot;:1200,&quot;settings&quot;:{&quot;slidesToShow&quot;:4,&quot;slidesMargin&quot;:&quot;15&quot;}},{&quot;breakpoint&quot;:1500,&quot;settings&quot;:{&quot;slidesToShow&quot;:5,&quot;slidesMargin&quot;:&quot;15&quot;}}]">
-                <div class="rows-space-0">
-                    <a target="_blank" href="#" class="item"
+                
+                 <% posts.map(post=>{ %>
+                 <div class="rows-space-0">
+                    <a target="_blank" href="<%= post.link %>" class="item"
                        tabindex="0">
-                        <img class="img-responsive lazy" src="/assets/images/insta1.jpg" alt="Home 01">
+                        <img class="img-responsive lazy" src="<%= post.image %>" >
                         <span class="instagram-info">
                                  <span class="social-wrap">
-                                    <span class="social-info">1
+                                    <!-- <span class="social-info">1
                                         <i class="pe-7s-chat"></i>
                                     </span>
                                     <span class="social-info">0
                                         <i class="pe-7s-like2"></i>
-                                    </span>
+                                    </span> -->
+                                    @<%= post.user %>
                                 </span>
                             </span>
                     </a>
                 </div>
-                <div class="rows-space-0">
+                <% }) %>
+                <!-- <div class="rows-space-0">
                     <a target="_blank" href="#" class="item" tabindex="0">
                         <img class="img-responsive lazy" src="/assets/images/insta2.jpg" alt="Home 01">
                         <span class="instagram-info">
@@ -588,10 +571,11 @@
                                     </span>
                                 </span>
                     </a>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
+</div>
 </div>
 <%- include('footer'); -%>
 <a href="#" class="backtotop active">
