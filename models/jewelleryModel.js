@@ -49,7 +49,7 @@ const jewellerySchema = new mongoose.Schema({
 
 jewellerySchema.pre('save', function (next) {
 
-  const fieldsToCapitalize = ['name', 'material', 'category'];
+  const fieldsToCapitalize = ['name', 'material'];
   for (const field of fieldsToCapitalize) {
     if (this.isModified(field)) {
       // Capitalize the field using lodash
