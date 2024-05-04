@@ -52,34 +52,28 @@
                                              src="https://s.w.org/images/core/emoji/11/svg/1f50d.svg"></a> -->
                                     <div class="flex-viewport">
                                         <figure class="kaycee-product-gallery__wrapper">
-                                            <div class="kaycee-product-gallery__image">
+                                            <% product.images.map((image)=>{ %>
+                                                   <div class="kaycee-product-gallery__image">
                                                 <img alt="img"
-                                                     src="https://images.unsplash.com/photo-1561828995-aa79a2db86dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8amV3ZWxyeXxlbnwwfHwwfHx8MA%3D%3D">
-                                            </div>
-                                            <div class="kaycee-product-gallery__image">
-                                                <img src="https://images.unsplash.com/photo-1616837874254-8d5aaa63e273?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGpld2Vscnl8ZW58MHx8MHx8fDA%3D"
-                                                     alt="img">
-                                            </div>
-                                            <div class="kaycee-product-gallery__image">
-                                                <img src="https://images.unsplash.com/photo-1616837874254-8d5aaa63e273?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGpld2Vscnl8ZW58MHx8MHx8fDA%3D"
-                                                     class="" alt="img">
-                                            </div>
+                                                     src="<%= image %>">
+                                            </div> 
+                                          <%  }) %>
+                                            
+                                            
                                             
                                         </figure>
                                     </div>
                                     <ol class="flex-control-nav flex-control-thumbs">
-                                        <li><img
-                                                src="https://images.unsplash.com/photo-1561828995-aa79a2db86dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8amV3ZWxyeXxlbnwwfHwwfHx8MA%3D%3D"
+                                        <% product.images.map((image)=>{ %>
+
+                                            <li><img
+                                                src="<%= image %>"
                                                 alt="img">
                                         </li>
-                                        <li><img
-                                                src="https://images.unsplash.com/photo-1616837874254-8d5aaa63e273?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGpld2Vscnl8ZW58MHx8MHx8fDA%3D"
-                                                alt="img">
-                                        </li>
-                                        <li><img
-                                                src="https://images.unsplash.com/photo-1616837874254-8d5aaa63e273?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGpld2Vscnl8ZW58MHx8MHx8fDA%3D"
-                                                alt="img">
-                                        </li>
+
+                                            <%  }) %>
+
+                                        
                                         
                                     </ol>
                                 </div>
@@ -176,12 +170,9 @@
                         <ul class="tabs dreaming-tabs" role="tablist">
                             <li class="description_tab active" id="tab-title-description" role="tab"
                                 aria-controls="tab-description">
-                                <a href="#tab-description">Description</a>
+                                <a href="#tab-description">More Info</a>
                             </li>
-                            <li class="additional_information_tab" id="tab-title-additional_information" role="tab"
-                                aria-controls="tab-additional_information">
-                                <a href="#tab-additional_information">Additional information</a>
-                            </li>
+                            
                             <!-- <li class="reviews_tab" id="tab-title-reviews" role="tab" aria-controls="tab-reviews">
                                 <a href="#tab-reviews">Reviews (0)</a>
                             </li> -->
@@ -191,15 +182,10 @@
                             <h2>Description</h2>
                             <div class="container-table">
                                 <div class="container-cell">
-                                    <h2 class="az_custom_heading">Platea viverra aenean<br>dictumst</h2>
-                                    <p>Lorem ipsum dolor sit amet consectetur elit
-                                        scelerisque integer, quam dapibus per risus donec semper
-                                        vulputate interdum, imperdiet mus rhoncus commodo ultricies
-                                        class urna tincidunt. Imperdiet vitae lacus etiam metus ut nisl
-                                        curae, conubia enim scelerisque quis facilisis torquent,
-                                        ultricies orci faucibus dictumst mauris curabitur. Massa risus
-                                        nec sociosqu fames montes accumsan iaculis justo turpis
-                                        luctus</p>
+                                    <h2 class="az_custom_heading">Unwavering Trust in Every Gem <br> at MyssticByArzoo
+
+                                    </h2>
+                                    <p>At MyssticByArzoo, we understand that jewelry is not just an accessory but a personal statement of style and identity. That's why we are committed to providing only the most authentic and high-quality pieces. Each item in our collection is crafted with precision and care, ensuring that you receive products that are not only beautiful but also meet the highest standards of integrity and craftsmanship. Trust MyssticByArzoo to add a touch of genuine elegance to your every day.</p>
                                 </div>
                                 <div class="container-cell">
                                     <div class="az_single_image-wrapper az_box_border_grey">
@@ -215,92 +201,15 @@
                                 </div>
                                 <div class="container-cell">
                                     <h2 class="az_custom_heading">
-                                        Potenti praesent molestie<br>
-                                        at viverra</h2>
-                                    <p>This generator uses a dictionary of Latin words to construct
-                                        passages of Lorem Ipsum text that meet your desired length. The
-                                        sentence and paragraph durations and punctuation dispersal are
-                                        calculated using Gaussian distribution, based on statistical
-                                        analysis of real world texts. This ensures that the generated
-                                        Lorem Ipsum text is unique, free of repetition and also
-                                        resembles readable text as much as possible.</p>
+                                        Jewelry Care Guidelines
+
+</h2>
+                                    <p>Each piece of our jewelry at MyssticByArzoo is crafted with meticulous attention to detail and requires careful handling. To ensure your jewelry maintains its luster and integrity, avoid exposing it to water and direct contact with lotions and perfumes. For storage, we provide a special zip-lock bag designed to protect your jewelry from air and moisture, preventing tarnish and ensuring it remains pristine for years to come.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="kaycee-Tabs-panel kaycee-Tabs-panel--additional_information panel entry-content kaycee-tab"
-                             id="tab-additional_information" role="tabpanel"
-                             aria-labelledby="tab-title-additional_information">
-                            <h2>Additional information</h2>
-                            <table class="shop_attributes">
-                                <tbody>
-                                <tr>
-                                    <th>Color</th>
-                                    <td><p>Blue, Pink, Red, Yellow</p>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- <div class="kaycee-Tabs-panel kaycee-Tabs-panel--reviews panel entry-content kaycee-tab"
-                             id="tab-reviews" role="tabpanel" aria-labelledby="tab-title-reviews">
-                            <div id="reviews" class="kaycee-Reviews">
-                                <div id="comments">
-                                    <h2 class="kaycee-Reviews-title">Reviews</h2>
-                                    <p class="kaycee-noreviews">There are no reviews yet.</p>
-                                </div>
-                                <div id="review_form_wrapper">
-                                    <div id="review_form">
-                                        <div id="respond" class="comment-respond">
-                                            <span id="reply-title" class="comment-reply-title">Be the first to review “T-shirt with skirt”</span>
-                                            <form id="commentform" class="comment-form">
-                                                <p class="comment-notes"><span id="email-notes">Your email address will not be published.</span>
-                                                    Required fields are marked <span class="required">*</span></p>
-                                                <p class="comment-form-author">
-                                                    <label for="author">Name&nbsp;<span
-                                                            class="required">*</span></label>
-                                                    <input id="author" name="author" value="" size="30" required=""
-                                                           type="text"></p>
-                                                <p class="comment-form-email"><label for="email">Email&nbsp;
-                                                    <span class="required">*</span></label>
-                                                    <input id="email" name="email" value="" size="30" required=""
-                                                           type="email"></p>
-                                                <div class="comment-form-rating"><label for="rating">Your rating</label>
-                                                    <p class="stars">
-                                                        <span>
-                                                        <a class="star-1" href="#">1</a>
-                                                        <a class="star-2" href="#">2</a>
-                                                        <a class="star-3" href="#">3</a>
-                                                        <a class="star-4" href="#">4</a>
-                                                        <a class="star-5" href="#">5</a>
-                                                        </span>
-                                                    </p>
-                                                    <select title="product_cat" name="rating" id="rating" required=""
-                                                            style="display: none;">
-                                                        <option value="">Rate…</option>
-                                                        <option value="5">Perfect</option>
-                                                        <option value="4">Good</option>
-                                                        <option value="3">Average</option>
-                                                        <option value="2">Not that bad</option>
-                                                        <option value="1">Very poor</option>
-                                                    </select></div>
-                                                <p class="comment-form-comment"><label for="comment">Your
-                                                    review&nbsp;<span class="required">*</span></label><textarea
-                                                        id="comment" name="comment" cols="45" rows="8"
-                                                        required=""></textarea></p><input name="wpml_language_code"
-                                                                                          value="en" type="hidden">
-                                                <p class="form-submit"><input name="submit" id="submit" class="submit"
-                                                                              value="Submit" type="submit"> <input
-                                                        name="comment_post_ID" value="27" id="comment_post_ID"
-                                                        type="hidden">
-                                                    <input name="comment_parent" id="comment_parent" value="0"
-                                                           type="hidden">
-                                                </p></form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                        </div> -->
+                        
+                       
                     </div>
                 </div>
             </div>
@@ -321,8 +230,8 @@
                             <div class="product-thumb">
                                 <a class="thumb-link" href="/product/<%= item._id %>">
                                     <img class="img-responsive"
-                                         src="/assets/images/apro1211-2-600x778.jpg"
-                                         alt="Gold Bracelet" width="600" height="778">
+                                         src="<%= item.images[0] %>"
+                                         style="width: 255px; height: 255px;">
                                 </a>
                                 <div class="flash">
                                     <% if (item.charms && item.charms.length>0) { %>
