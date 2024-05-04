@@ -82,9 +82,10 @@
                                 <div class="flash">
                                     <span class="onnew"><span class="text">New</span></span></div>
                                 <h1 class="product_title entry-title"><%= product.name %></h1>
-                                <p class="price"><span
-                                        class="kaycee-Price-amount amount"><span
-                                        class="kaycee-Price-currencySymbol">Rs</span><%= product.discountedPrice %></span></p>
+                                <p class="price">
+                                    <del><span class="kaycee-Price-amount amount"><span class="kaycee-Price-currencySymbol">Rs</span><%= product.price %></span></del>
+                                    <ins><span class="kaycee-Price-amount amount"><span class="kaycee-Price-currencySymbol">Rs</span><%= product.discountedPrice %></span></ins>
+                                </p>
                                 <p class="stock in-stock">
                                     Availability: <span><%= product.isAvailable?" In stock": "Out of Stock" %></span>
                                 </p>
