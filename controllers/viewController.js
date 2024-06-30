@@ -59,7 +59,7 @@ exports.product = catchAsync(async (req, res, next) => {
     product = await Products.findOne({_id: req.params.id})
     relatedProducts = await Products.find({category: product.category})
   }
-  // console.log(product)
+  console.log(product)
   res.status(200).render('product',{product,relatedProducts});
 });
 

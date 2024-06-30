@@ -20,7 +20,6 @@ const jewellerySchema = new mongoose.Schema({
   },
   discountedPrice: {
     type: Number,
-    required: [true, 'Discounted Price is required'],
   },
   charms: [
     {type: String}

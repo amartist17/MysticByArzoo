@@ -17,7 +17,6 @@ const otherProductsSchema = new mongoose.Schema({
   },
   discountedPrice: {
     type: Number,
-    required: [true, 'Discounted Price is required'],
   },
 
   images: [

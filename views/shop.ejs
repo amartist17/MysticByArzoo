@@ -207,10 +207,18 @@
                                     <h3 class="product-name product_title">
                                         <a href="/product/<%= item._id %>"><%= item.name %> <br> <strong><%= item.material %></strong></a>
                                     </h3>
+                                    <% if(item.discountedPrice!= null) {%>
                                     <span class="price"><del><span class="kaycee-Price-amount amount"><span
                                             class="kaycee-Price-currencySymbol">Rs</span><%= item.price %></span></del> <ins><span
                                             class="kaycee-Price-amount amount"><span
-                                            class="kaycee-Price-currencySymbol">Rs</span><%= item.discountedPrice %></span></ins></span>
+                                            class="kaycee-Price-currencySymbol">Rs</span><%= item.discountedPrice %></span></ins>
+                                        </span>
+                                        <% }else{ %>
+                                            <span class="price"><del></del> <ins><span
+                                                class="kaycee-Price-amount amount"><span
+                                                class="kaycee-Price-currencySymbol">Rs</span><%= item.price %></span></ins>
+                                            </span>
+                                            <% } %>
                                     <div class="kaycee-product-details__short-description">
                                         <%- item.description %>
                                         
