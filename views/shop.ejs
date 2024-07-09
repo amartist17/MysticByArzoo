@@ -20,7 +20,14 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/megamenu.css"/>
     <link rel="stylesheet" type="text/css" href="/assets/css/dreaming-attribute.css"/>
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
-    
+    <style>
+        @media (max-width: 767px) {
+  .img-responsive {
+    height: 213px !important;
+    width: 213px !important;
+  }
+}
+    </style>
     <title>Shop</title>
 </head>
 <body>
@@ -192,7 +199,7 @@
                                     </a>
                                      <div class="flash">
                                        <!-- <span class="onsale"><span class="number">-14%</span></span>-->
-                                       <% if (item.charms && item.charms.length>0) { %>
+                                       <% if (item.charms && item.charms.length>1) { %>
                                             <span class="onsale"><span class="text">With Charm</span></span>
                                             <% } %>
                                     </div> 
