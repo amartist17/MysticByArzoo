@@ -24,6 +24,7 @@
     "nodemailer": "^6.9.6",
     "quill-delta-to-html": "^0.12.1",
     "razorpay": "^2.9.2",
+    "template": "file:",
     "validator": "^13.9.0"
   }
 }
